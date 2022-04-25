@@ -39,10 +39,13 @@ class UserAdapter(context: Context) : ListAdapter<User, UserViewHolder>(DIF_UTIL
 }
 
 class UserViewHolder(
-    private var binding: ItemUserBinding
+    private val binding: ItemUserBinding
 ) : RecyclerView.ViewHolder(binding.root) {
 
     fun bind(user: User) {
-
+        with(binding) {
+            firstNameTextView.text = user.firstName
+            lastNameTextView.text = user.lastName
+        }
     }
 }

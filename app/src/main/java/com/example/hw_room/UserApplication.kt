@@ -3,13 +3,17 @@ package com.example.hw_room
 import android.app.Application
 import android.content.Context
 import androidx.room.Room
+import com.example.hw_room.repository.UserRepository
 import com.example.hw_room.room.AppDatabase
 
 
 class UserApplication : Application() {
 
     private var _appDatabase: AppDatabase? = null
-    val appDatabase get() = requireNotNull(_appDatabase)
+    private val appDatabase get() = requireNotNull(_appDatabase)
+    val repository by lazy {
+        UserRepository(appDatabase)
+    }
 
     override fun onCreate() {
         super.onCreate()
@@ -19,15 +23,14 @@ class UserApplication : Application() {
                 AppDatabase::class.java,
                 "room_database"
             )
-            .allowMainThreadQueries()
             .build()
     }
 }
 
-val Context.appDatabase: AppDatabase
+val Context.repository: UserRepository
     get() = when (this) {
-        is UserApplication -> appDatabase
-        else -> applicationContext.appDatabase
+        is UserApplication -> repository
+        else -> applicationContext.repository
     }
 
 
