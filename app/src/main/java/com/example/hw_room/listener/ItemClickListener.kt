@@ -4,5 +4,7 @@ import com.example.hw_room.model.User
 
 interface ItemClickListener {
 
-    fun onDeleteItemClickListener(user: User)
+    fun onDeleteButtonItemClickListener(user: User)
+
+    fun onUpdateItemClickListener(user: User)
 }

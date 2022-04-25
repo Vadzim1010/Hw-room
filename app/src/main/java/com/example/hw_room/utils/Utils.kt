@@ -12,3 +12,11 @@ fun TextInputLayout.getTextAndValidate(): CharSequence {
         ""
     }
 }
+
+fun String.toFirstNameStringFormat(): String {
+    return "first name:\n$this"
+}
+
+fun String.toLastNameStringFormat(): String {
+    return "last name:\n$this"
+}

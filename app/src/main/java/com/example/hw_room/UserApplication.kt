@@ -32,6 +32,3 @@ val Context.repository: UserRepository
         is UserApplication -> repository
         else -> applicationContext.repository
     }
-
-
-

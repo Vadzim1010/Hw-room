@@ -3,12 +3,12 @@
 
     <item
         android:id="@+id/users"
-        android:icon="@android:drawable/list_selector_background"
-        android:title="@string/users_fragment" />
+        android:icon="@drawable/ic_baseline_format_list_bulleted_24"
+        android:title="@string/users" />
 
     <item
         android:id="@+id/user_desc"
-        android:icon="@android:drawable/ic_menu_search"
-        android:title="@string/user_description" />
+        android:icon="@drawable/ic_baseline_add_circle_24"
+        android:title="@string/add_user" />
 
 </menu>

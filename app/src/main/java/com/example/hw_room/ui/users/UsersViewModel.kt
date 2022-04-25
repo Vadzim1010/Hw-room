@@ -14,6 +14,12 @@ class UsersViewModel(private val repository: UserRepository) : ViewModel() {
         return users.asLiveData()
     }
 
+    fun updateUser(user: User) {
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.updateUser(user)
+        }
+    }
+
     fun deleteUser(user: User) {
         viewModelScope.launch(Dispatchers.IO) {
             repository.deleteUser(user)

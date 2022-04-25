@@ -1,15 +1,17 @@
 package com.example.hw_room.adapter
 
+
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.AdapterView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.hw_room.databinding.ItemUserBinding
 import com.example.hw_room.listener.ItemClickListener
 import com.example.hw_room.model.User
+import com.example.hw_room.utils.toFirstNameStringFormat
+import com.example.hw_room.utils.toLastNameStringFormat
 
 class UserAdapter(
     context: Context,
@@ -51,11 +53,18 @@ class UserViewHolder(
 
     fun bind(user: User) {
         with(binding) {
-            firstNameTextView.text = user.firstName
-            lastNameTextView.text = user.lastName
-            deleteButton.setOnClickListener {
-                listener.onDeleteItemClickListener(user)
-            }
+            firstNameTextView.text = user.firstName.toFirstNameStringFormat()
+            lastNameTextView.text = user.lastName.toLastNameStringFormat()
+            initButtons(user)
+        }
+    }
+
+    private fun initButtons(user: User) = with(binding) {
+        deleteButton.setOnClickListener {
+            listener.onDeleteButtonItemClickListener(user)
+        }
+        cardView.setOnClickListener {
+            listener.onUpdateItemClickListener(user)
         }
     }
 }

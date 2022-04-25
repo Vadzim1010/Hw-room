@@ -1,9 +1,14 @@
 <resources>
     <string name="app_name">HW-Room</string>
-    <string name="users_fragment">Users Fragment</string>
-    <string name="user_description">User Description</string>
+    <string name="users">users</string>
+    <string name="add_user">add user</string>
     <string name="first_name">first name</string>
     <string name="last_name">last name</string>
     <string name="add">add</string>
     <string name="delete_button">delete button</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="submit">submit</string>
+    <string name="do_you_want_to_change_name">Do you want to change name?</string>
+    <string name="cancel">cancel</string>
 </resources>

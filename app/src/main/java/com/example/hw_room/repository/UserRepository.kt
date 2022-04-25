@@ -18,6 +18,10 @@ class UserRepository(private val appDatabase: AppDatabase) {
         userDao.insertUser(user)
     }
 
+    fun updateUser(user: User) {
+        userDao.updateUser(user)
+    }
+
     fun deleteUser(user: User) {
         userDao.deleteUser(user)
     }
