@@ -14,7 +14,11 @@ class UserRepository(private val appDatabase: AppDatabase) {
         return userDao.getAll()
     }
 
-    fun insertUser(user: User): Long {
-        return userDao.insertUser(user)
+    fun insertUser(user: User) {
+        userDao.insertUser(user)
+    }
+
+    fun deleteUser(user: User) {
+        userDao.deleteUser(user)
     }
 }

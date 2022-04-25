@@ -9,5 +9,6 @@ fun TextInputLayout.getTextAndValidate(): CharSequence {
             this.error = ""
         } ?: run {
         this.error = "Incorrect input"
-    }.toString()
+        ""
+    }
 }

@@ -1,4 +1,4 @@
-package com.example.hw_room.ui.adduser
+package com.example.hw_room.ui.newuser
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
@@ -10,12 +10,10 @@ import kotlinx.coroutines.launch
 
 class UserDescViewModel(private val repository: UserRepository) : ViewModel() {
 
-    fun insert(user: User): Long {
-        var userId: Long = 0
+    fun insert(user: User) {
         viewModelScope.launch(Dispatchers.IO) {
-            userId = repository.insertUser(user)
+            repository.insertUser(user)
         }
-        return userId
     }
 }
 

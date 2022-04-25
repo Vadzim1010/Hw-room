@@ -1,18 +1,23 @@
 package com.example.hw_room.ui.users
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.asLiveData
+import androidx.lifecycle.*
 import com.example.hw_room.model.User
 import com.example.hw_room.repository.UserRepository
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class UsersViewModel(private val repository: UserRepository) : ViewModel() {
 
-    private val users = repository.getAllUsers().asLiveData()
+    private val users = repository.getAllUsers()
 
     fun getUsers(): LiveData<List<User>> {
-        return users
+        return users.asLiveData()
+    }
+
+    fun deleteUser(user: User) {
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.deleteUser(user)
+        }
     }
 }
 

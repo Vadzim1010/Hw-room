@@ -27,6 +27,16 @@
             android:gravity="center"
             android:textSize="30sp"
             tools:text="some text" />
+
+        <ImageButton
+            android:id="@+id/delete_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@android:color/transparent"
+            android:contentDescription="@string/delete_button"
+            android:src="@drawable/ic_baseline_delete_forever_24" />
+
     </LinearLayout>
 
 </androidx.cardview.widget.CardView>

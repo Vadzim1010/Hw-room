@@ -1,9 +1,6 @@
 package com.example.hw_room.room
 
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
+import androidx.room.*
 import com.example.hw_room.model.User
 import kotlinx.coroutines.flow.Flow
 
@@ -15,4 +12,7 @@ interface UserDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertUser(user: User): Long
+
+    @Delete
+    fun deleteUser(user: User)
 }

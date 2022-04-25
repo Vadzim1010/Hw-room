@@ -1,4 +1,4 @@
-package com.example.hw_room.ui.adduser
+package com.example.hw_room.ui.newuser
 
 import android.os.Bundle
 import android.view.LayoutInflater

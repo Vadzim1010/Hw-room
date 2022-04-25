@@ -12,6 +12,6 @@
 
     <fragment
         android:id="@+id/user_desc"
-        android:name="com.example.hw_room.ui.adduser.NewUserFragment"
+        android:name="com.example.hw_room.ui.newuser.NewUserFragment"
         tools:layout="@layout/fragment_new_user" />
 </navigation>

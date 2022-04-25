@@ -9,9 +9,11 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.hw_room.adapter.UserAdapter
 import com.example.hw_room.databinding.FragmentUsersBinding
+import com.example.hw_room.listener.ItemClickListener
+import com.example.hw_room.model.User
 import com.example.hw_room.repository
 
-class UsersFragment : Fragment() {
+class UsersFragment : Fragment(), ItemClickListener {
 
     private var _binding: FragmentUsersBinding? = null
     private val binding get() = requireNotNull(_binding) { "_binding is $_binding" }
@@ -19,7 +21,7 @@ class UsersFragment : Fragment() {
         UsersViewModelFactory(requireContext().repository)
     }
     private val userAdapter by lazy {
-        UserAdapter(requireContext())
+        UserAdapter(requireContext(), this)
     }
 
     override fun onCreateView(
@@ -54,5 +56,9 @@ class UsersFragment : Fragment() {
             layoutManager = LinearLayoutManager(requireContext())
             adapter = userAdapter
         }
+    }
+
+    override fun onDeleteItemClickListener(user: User) {
+        viewModel.deleteUser(user)
     }
 }
