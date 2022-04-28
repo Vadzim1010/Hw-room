@@ -41,7 +41,6 @@ class UserAdapter(
                 return oldItem.firstName == newItem.firstName &&
                         oldItem.lastName == newItem.lastName
             }
-
         }
     }
 }
@@ -60,11 +59,8 @@ class UserViewHolder(
     }
 
     private fun initButtons(user: User) = with(binding) {
-        deleteButton.setOnClickListener {
-            listener.onDeleteButtonItemClickListener(user)
-        }
-        cardView.setOnClickListener {
-            listener.onUpdateItemClickListener(user)
+        popupMenuButton.setOnClickListener {
+            listener.onPopupMenuItemClickListener(user, popupMenuButton)
         }
     }
 }

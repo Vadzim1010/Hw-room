@@ -9,7 +9,7 @@ import androidx.fragment.app.viewModels
 import com.example.hw_room.databinding.FragmentNewUserBinding
 import com.example.hw_room.model.User
 import com.example.hw_room.repository
-import com.example.hw_room.utils.getTextAndValidate
+import com.example.hw_room.utils.getTextOrNullAndValidate
 
 class NewUserFragment : Fragment() {
 
@@ -43,14 +43,15 @@ class NewUserFragment : Fragment() {
     private fun initButtons() = with(binding) {
         addButton.setOnClickListener {
 
-            val firstName = firstNameContainer.getTextAndValidate()
-            val lastName = lastNameContainer.getTextAndValidate()
+            val firstName = firstNameContainer.getTextOrNullAndValidate()
+            val lastName = lastNameContainer.getTextOrNullAndValidate()
 
-            if (firstName.isNotBlank() && lastName.isNotBlank()) {
-                viewModel.insert(
-                    User(firstName = firstName.toString(), lastName = lastName.toString())
-                )
-            }
+            firstName ?: return@setOnClickListener
+            lastName ?: return@setOnClickListener
+
+            viewModel.insert(
+                User(firstName = firstName.toString(), lastName = lastName.toString())
+            )
         }
     }
 }

@@ -5,13 +5,13 @@
     android:id="@+id/card_view"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    app:cardCornerRadius="@dimen/item_user_card_corner_radius">
+    app:cardCornerRadius="@dimen/corner_radius">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:padding="16dp">
+        android:padding="@dimen/padding_layout">
 
         <TextView
             android:id="@+id/first_name_text_view"
@@ -29,16 +29,16 @@
             android:layout_weight="1"
             android:gravity="center"
             android:textSize="@dimen/item_user_text_size"
-            tools:text="some text" />
+            tools:text="some text\nasdasd" />
 
         <ImageButton
-            android:id="@+id/delete_button"
+            android:id="@+id/popup_menu_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
+            android:layout_gravity="top|end"
             android:background="@android:color/transparent"
             android:contentDescription="@string/delete_button"
-            android:src="@drawable/ic_baseline_delete_forever_24" />
+            android:src="@drawable/ic_baseline_more_vert_24" />
 
     </LinearLayout>
 

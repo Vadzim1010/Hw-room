@@ -8,30 +8,11 @@
     <fragment
         android:id="@+id/users"
         android:name="com.example.hw_room.ui.users.UsersFragment"
-        tools:layout="@layout/fragment_users">
-
-        <action
-            android:id="@+id/to_dialog_update"
-            app:destination="@+id/dialog_update" />
-    </fragment>
-
+        tools:layout="@layout/fragment_users" />
 
     <fragment
-        android:id="@+id/user_desc"
+        android:id="@+id/add_user"
         android:name="com.example.hw_room.ui.newuser.NewUserFragment"
         tools:layout="@layout/fragment_new_user" />
 
-
-    <fragment
-        android:id="@+id/dialog_update"
-        android:name="com.example.hw_room.ui.users.UpdateDialogFragment"
-        tools:layout="@layout/dialog_fragment_update">
-
-        <argument
-            android:name="first_name"
-            app:argType="string" />
-        <action
-            android:id="@+id/action_dialog_update_to_users"
-            app:destination="@id/users" />
-    </fragment>
 </navigation>

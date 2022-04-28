@@ -1,4 +1,4 @@
-package com.example.hw_room.ui.users
+package com.example.hw_room.ui.dialog
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,15 +6,15 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.os.bundleOf
 import androidx.fragment.app.DialogFragment
-import com.example.hw_room.databinding.DialogFragmentUpdateBinding
+import com.example.hw_room.databinding.FragmentDialogEditNameBinding
 import com.example.hw_room.model.User
 import com.example.hw_room.utils.RESULT_KEY
 import com.example.hw_room.utils.USER_RESULT_KEY
-import com.example.hw_room.utils.getTextAndValidate
+import com.example.hw_room.utils.getTextOrNullAndValidate
 
-class UpdateDialogFragment private constructor() : DialogFragment() {
+class EditNameDialogFragment private constructor() : DialogFragment() {
 
-    private var _binding: DialogFragmentUpdateBinding? = null
+    private var _binding: FragmentDialogEditNameBinding? = null
     private val binding get() = requireNotNull(_binding) { "biding is null $_binding" }
 
     override fun onCreateView(
@@ -22,7 +22,7 @@ class UpdateDialogFragment private constructor() : DialogFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        return DialogFragmentUpdateBinding.inflate(layoutInflater, container, false)
+        return FragmentDialogEditNameBinding.inflate(layoutInflater, container, false)
             .also { _binding = it }
             .root
     }
@@ -41,22 +41,25 @@ class UpdateDialogFragment private constructor() : DialogFragment() {
 
     private fun initButtons(user: User) = with(binding) {
         submitButton.setOnClickListener {
-            val firstNameResult = firstNameContainer.getTextAndValidate().toString()
-            val lastNameResult = lastNameContainer.getTextAndValidate().toString()
 
-            if (firstNameResult.isNotBlank() && lastNameResult.isNotBlank()) {
-                parentFragmentManager.setFragmentResult(
-                    RESULT_KEY,
-                    bundleOf(
-                        USER_RESULT_KEY to user.copy(
-                            firstName = firstNameResult,
-                            lastName = lastNameResult
-                        )
+            val firstNameResult = firstNameContainer.getTextOrNullAndValidate()
+            val lastNameResult = lastNameContainer.getTextOrNullAndValidate()
+
+            firstNameResult ?: return@setOnClickListener
+            lastNameResult ?: return@setOnClickListener
+
+            parentFragmentManager.setFragmentResult(
+                RESULT_KEY,
+                bundleOf(
+                    USER_RESULT_KEY to user.copy(
+                        firstName = firstNameResult.toString(),
+                        lastName = lastNameResult.toString()
                     )
                 )
-                dismiss()
-            }
+            )
+            dismiss()
         }
+
         cancelButton.setOnClickListener {
             dismiss()
         }
@@ -71,8 +74,8 @@ class UpdateDialogFragment private constructor() : DialogFragment() {
 
         private const val USER_KEY = "user_key"
 
-        fun getInstance(user: User): UpdateDialogFragment {
-            return UpdateDialogFragment().apply {
+        fun getInstance(user: User): EditNameDialogFragment {
+            return EditNameDialogFragment().apply {
                 arguments = bundleOf(USER_KEY to user)
             }
         }

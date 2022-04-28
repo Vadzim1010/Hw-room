@@ -1,10 +1,9 @@
 package com.example.hw_room.listener
 
+import android.view.View
 import com.example.hw_room.model.User
 
 interface ItemClickListener {
 
-    fun onDeleteButtonItemClickListener(user: User)
-
-    fun onUpdateItemClickListener(user: User)
+    fun onPopupMenuItemClickListener(user: User, view: View)
 }
